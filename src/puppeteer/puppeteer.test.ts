@@ -6,7 +6,9 @@ describe('Puppeteer', () => {
   let page: Page
 
   beforeAll(async () => {
-    browser = await puppeteer.launch()
+    browser = await puppeteer.launch({
+      headless: false
+    })
     page = await browser.newPage()
   })
 
@@ -15,11 +17,15 @@ describe('Puppeteer', () => {
   })
 
   it('should navigate to Google and search for "puppeteer"', async () => {
-    await page.goto('https://www.google.com')
-    await page.type('input[name="q"]', 'puppeteer')
+    await page.goto('https://www.google.com', {
+      waitUntil: 'networkidle2',
+      timeout: 12000
+    })
+    await page.type('input', 'puppeteer')
     await page.keyboard.press('Enter')
     await page.waitForNavigation()
     const title = await page.title()
+    console.log(title)
     expect(title).toContain('puppeteer')
   })
 })
