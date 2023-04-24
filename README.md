@@ -81,6 +81,31 @@ pnpm install eslint-config-standard-with-typescript
   },
   "editor.formatOnSave": false,
 ```
+
+## Jest
+
+```bash
+pnpm install -D jest @types/jest ts-jest
+```
+Jest Config
+```
+module.exports = {
+  roots: ['<rootDir>/src'],
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  transform: {
+    '.+\\.ts$': 'ts-jest'
+  }
+}
+```
+
+To run:
+```
+pnpm test
+```
+
 ### tsc-watch
 
 The configuration for `tsc-watch` is located in the `tsconfig.json` file as well. You can modify this file to change the options for the `tsc-watch` compiler.
