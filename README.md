@@ -1,4 +1,10 @@
-# My TypeScript Project
+# Design Patterns in Typescript
+
+## Strategy Pattern
+
+
+
+## Typescript and Jest Boilerplate
 
 This is a starter template for a TypeScript project in Visual Studio Code, using `pnpm` as the package manager and `tsc-watch` for automatic compilation and running.
 
