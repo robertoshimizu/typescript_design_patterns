@@ -128,7 +128,7 @@ module.exports = config
 ```
 So in this project, unit tests are ran when they have the suffix `spec`
 
-
+More configurations: `clean-node-api Manguinho - aula 11`
 
 
 ### tsc-watch
