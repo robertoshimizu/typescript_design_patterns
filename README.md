@@ -131,9 +131,16 @@ So in this project, unit tests are ran when they have the suffix `spec`
 More configurations: `clean-node-api Manguinho - aula 11`
 
 
-### tsc-watch
+### Transpile and run (watch mode)
 
 The configuration for `tsc-watch` is located in the `tsconfig.json` file as well. You can modify this file to change the options for the `tsc-watch` compiler.
+
+But here we run through the script
+```
+pnpm build
+pnpm watch
+pnpm start
+```
 
 ## Git
 
