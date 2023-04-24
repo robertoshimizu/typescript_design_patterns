@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-useless-constructor */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+
 abstract class Duck {
   constructor () {}
   quack: (() => void) | undefined
