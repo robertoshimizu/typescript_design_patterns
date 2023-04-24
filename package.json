@@ -7,7 +7,9 @@
     "start": "node dist/index.js",
     "build": "tsc",
     "watch": "pnpx tsc-watch --onSuccess \"node dist/index.js\"",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
+    "test:unit":"pnpm test -- --silent --noStackTrace -c jest-unit.config.js",
+    "test:watch": "pnpm test:unit -- --watch",
     "format": "npx prettier '**/*.ts' '**/*.js' --write"
   },
   "keywords": [],

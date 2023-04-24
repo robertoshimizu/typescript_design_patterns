@@ -105,6 +105,31 @@ To run:
 ```
 pnpm test
 ```
+But I can have several scripts to run tests, at `package.json`:
+```json
+"scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "watch": "pnpx tsc-watch --onSuccess \"node dist/index.js\"",
+    "test": "jest --passWithNoTests",
+        "test:unit":"pnpm test -- --silent --noStackTrace -c jest-unit-config.js",
+    "test:watch": "pnpm test:unit -- --watch",
+    "format": "npx prettier '**/*.ts' '**/*.js' --write"
+  },
+```
+
+I can have a specific script and config only for `unit tests`:
+
+Jest-Unit-Config
+```
+const config = require('./jest.config.js')
+config.testMatch = ['**/*.spec.ts']
+module.exports = config
+```
+So in this project, unit tests are ran when they have the suffix `spec`
+
+
+
 
 ### tsc-watch
 
