@@ -79,6 +79,15 @@ pnpm install eslint-config-standard-with-typescript
 
 The configuration for `tsc-watch` is located in the `tsconfig.json` file as well. You can modify this file to change the options for the `tsc-watch` compiler.
 
+## Git
+
+### Amend: Add a commit to the last one
+
+```bash
+git add .
+git commit --amend --no-edit
+```
+
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more information.
