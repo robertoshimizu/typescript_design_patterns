@@ -74,7 +74,13 @@ For that there is a wrapper at https://github.com/standard/eslint-config-standar
 ```bash
 pnpm install eslint-config-standard-with-typescript
 ```
-
+#### Update Settings to:
+```
+"editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+```
 ### tsc-watch
 
 The configuration for `tsc-watch` is located in the `tsconfig.json` file as well. You can modify this file to change the options for the `tsc-watch` compiler.
@@ -87,6 +93,8 @@ The configuration for `tsc-watch` is located in the `tsconfig.json` file as well
 git add .
 git commit --amend --no-edit
 ```
+
+
 
 ## License
 
