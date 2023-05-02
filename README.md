@@ -2,6 +2,26 @@
 
 ## Strategy Pattern
 
+Scenario: inheritance. Have an abstract class `Duck` and any type of Duck: Mallard Duck, Redhead Duck, implements it, and therefore inherits the behaviors: quack, swim and display.
+
+Problems: 
+- what if some type of ducks have behaviors that are not common to all ducks? For example, if we define a `fly()` method in the parent class, all subclasses will inherit the fly(), but `not all ducks can fly`. `Rubber Ducks` don't fly nor quack, but they `squeak`.
+
+Solutions:
+- override the fly() and quack() methods at the subclass implementation?
+- implement specific behaviors to specific type of ducks, for example, `squeak()` in the Rubber duck subclass implementation.
+
+Impacts:
+- Need to track all duck behaviors and implement them separately.
+- If another behavior is added or resumed, need to go individually to all subclasses and change it. If `changes are frequent`, then this becomes cumbersome.
+
+> ### #1 Design Principle: Identify the aspects of your application that vary and separate them from what stays the same.
+
+If you've got some aspect of your code that is changing, say with evry new requirement, then you know you've got a `behavior` that needs to be pulled out and separated from all the stuff that doesn't change. Take the parts that vary and **encapsulate** them, so later you can alter or extend the part that varies without affecting those that do not.
+
+In the example, separate out `Fly` and `Quack` methods, and create a new set of classes that represent each behavior.
+
+> ### #2 Design Principle: Program to an interface, not an implementation.
 
 
 ## Typescript and Jest Boilerplate
