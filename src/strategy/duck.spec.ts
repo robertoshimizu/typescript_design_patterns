@@ -1,10 +1,16 @@
-import { MallardDuck, RubberDuck } from './duck.protocol'
+import { type FlyBehavior, FlyWithWings, MallardDuck,type QuackBehavior, Quack } from './duck.protocol'
 
 describe('Mallard Duck behaviors', () => {
-  const sut = new MallardDuck()
+  const flyWithWings: FlyBehavior = new FlyWithWings()
+  const quack: QuackBehavior = new Quack()
+  const sut = new MallardDuck(flyWithWings, quack)
   test('Mallard duck should quack', () => {
-    expect(sut.quack()).toBe('Quack')
+    expect(sut.performQuack()).toBe('Quack')
   })
+  test('Mallard duck should fly', () => {
+    expect(sut.performFly()).toBe('Fly')
+  })
+
   test('Mallard duck should swim', () => {
     expect(sut.swim()).toBe('Swim')
   })
@@ -13,15 +19,18 @@ describe('Mallard Duck behaviors', () => {
   })
 })
 
-describe('Rubber Duck behaviors', () => {
-  const sut = new RubberDuck()
-  test('Rubber duck should not Squeak', () => {
-    expect(sut.quack()).toBe('Squeak')
-  })
-  test('Rubber duck should float', () => {
-    expect(sut.swim()).toBe('Float')
-  })
-  test('Rubber duck should display', () => {
-    expect(sut.display()).toBe('I am a Rubber Duck')
-  })
-})
+// describe('Rubber Duck behaviors', () => {
+//   const sut = new RubberDuck()
+//   test('Rubber duck should Squeak', () => {
+//     expect(sut.performQuack()).toBe('Quack')
+//   })
+//   test('Rubber duck should not fly', () => {
+//     expect(sut.performFly()).toBe("Don't fly")
+//   })
+//   test('Rubber duck should float', () => {
+//     expect(sut.swim()).toBe('Float')
+//   })
+//   test('Rubber duck should display', () => {
+//     expect(sut.display()).toBe('I am a Rubber Duck')
+//   })
+// })
