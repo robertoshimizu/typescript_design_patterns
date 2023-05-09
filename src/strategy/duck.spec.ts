@@ -1,4 +1,3 @@
-
 abstract class Duck {
   constructor () {}
   quack!: () => void
@@ -11,9 +10,17 @@ class MallardDuck extends Duck {
     super()
   }
 
-  quack = () => { console.log('Quack')}
-  swim = () => { console.log('Swim') }
-  display = () => { console.log('I am a Mallard Duck') }
+  quack = () => {
+    console.log('Quack')
+  }
+
+  swim = () => {
+    console.log('Swim')
+  }
+
+  display = () => {
+    console.log('I am a Mallard Duck')
+  }
 }
 
 class RubberDuck extends Duck {
@@ -21,12 +28,18 @@ class RubberDuck extends Duck {
     super()
   }
 
-  quack = () => {     
-    console.log('I cannot quack')    
-    throw new Error();
-    }  
-  swim = () => { console.log('Float') }
-  display = () => { console.log('I am a Rubber Duck') }
+  quack = () => {
+    console.log('I cannot quack')
+    throw new Error()
+  }
+
+  swim = () => {
+    console.log('Float')
+  }
+
+  display = () => {
+    console.log('I am a Rubber Duck')
+  }
 }
 
 describe('Mallard Duck behaviors', () => {

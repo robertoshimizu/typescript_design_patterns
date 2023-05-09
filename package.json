@@ -10,7 +10,9 @@
     "test": "jest --passWithNoTests",
     "test:unit":"pnpm test -- --silent --noStackTrace -c jest-unit.config.js",
     "test:watch": "pnpm test:unit -- --watch",
-    "format": "npx prettier '**/*.ts' '**/*.js' --write"
+    "format": "npx prettier '**/*.ts' '**/*.js' --write",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "keywords": [],
   "author": "",
