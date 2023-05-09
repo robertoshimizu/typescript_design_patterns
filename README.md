@@ -24,6 +24,41 @@ In the example, separate out `Fly` and `Quack` methods, and create a new set of 
 > ### #2 Design Principle: Program to an interface, not an implementation.
 
 
+# TDD
+Test-Driven Development (TDD) is a software development methodology in which tests are written before the code itself, ensuring that the code meets the desired requirements and behaves as expected. In TDD, developers create automated tests to check the functionality of their code before implementing it. This approach helps catch bugs early, improve code quality, and facilitate code refactoring.
+
+In TDD, several terms are used to describe different testing components and techniques. Here is a panorama of the key terms:
+
+1. Unit Test: A type of test that focuses on a single unit of code, usually a function or a method, to ensure it works correctly in isolation.
+
+2. Integration Test: A test that focuses on the interaction between multiple units of code, such as classes or modules, to ensure they work correctly together.
+
+3. Spies: Test spies are functions that record how other functions are called, including their arguments, return values, and the number of times they were called. Spies can be used to verify that a function has been called with the correct arguments or a specific number of times.
+
+4. Stubs: Stubs are functions or objects that replace real implementations with predefined behavior. They are used to isolate the unit of code being tested from its dependencies, allowing developers to test a single unit without worrying about the behavior of external dependencies.
+
+5. Mocks: Mocks are a more advanced form of stubs. They are objects or functions that mimic the behavior of real objects or functions but also include built-in expectations about how they should be used, such as the number of times a function should be called or the arguments it should receive. If a mock's expectations are not met, the test fails.
+
+6. Fakes: Fakes are lightweight implementations of objects or functions that replace the real ones during testing. They are typically simpler than the actual implementations and can be used to test complex scenarios without incurring the overhead of using real objects or functions.
+
+7. Test Doubles: A general term for any test object that replaces a real object during testing, including spies, stubs, mocks, and fakes.
+
+8. Test Suite: A collection of test cases or test scenarios designed to test a specific component or functionality of an application.
+
+9. Test Runner: A tool or framework that automates the process of executing tests and reporting the results.
+
+10. Test Fixture: A fixed environment or setup used to consistently run tests. This may include setting up database connections, creating objects, or configuring other necessary resources.
+
+11. Continuous Integration (CI): A development practice that involves automatically building, testing, and merging code changes into a shared repository to detect and fix integration issues as early as possible.
+
+These terms represent some of the core concepts in Test-Driven Development. Understanding them can help you better navigate TDD practices and improve the quality of your code.
+
+>`SUT` stands for System Under Test. It refers to the specific component, module, function, or class being tested in a given test case. The SUT is the primary focus of a test, and the goal is to ensure that it meets the expected requirements and behaves correctly in various scenarios.
+
+In Test-Driven Development (TDD), developers write tests that specifically target the SUT, often isolating it from external dependencies using test doubles like stubs or mocks. By focusing on the SUT, developers can ensure that individual units of code are working correctly before integrating them with other components.
+
+In summary, the SUT is the main subject of a test, and its purpose is to verify the correctness and proper behavior of the component under examination.
+
 ## Typescript and Jest Boilerplate
 
 This is a starter template for a TypeScript project in Visual Studio Code, using `pnpm` as the package manager and `tsc-watch` for automatic compilation and running.
