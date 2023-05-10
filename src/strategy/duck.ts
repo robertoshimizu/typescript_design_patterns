@@ -1,3 +1,5 @@
+import { type QuackBehavior, type FlyBehavior } from './duck.protocol'
+
 export abstract class Duck {
   flyBehavior!: FlyBehavior
   quackBehavior!: QuackBehavior
@@ -19,12 +21,4 @@ export abstract class Duck {
 
   swim!: () => void
   display!: () => void
-}
-
-export interface FlyBehavior {
-  fly: () => string
-}
-
-export interface QuackBehavior {
-  quack: () => string
 }
