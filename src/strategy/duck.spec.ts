@@ -1,4 +1,10 @@
-import { type FlyBehavior, FlyWithWings, MallardDuck,type QuackBehavior, Quack } from './duck.protocol'
+import {
+  type FlyBehavior,
+  FlyWithWings,
+  MallardDuck,
+  type QuackBehavior,
+  Quack
+} from './duck.protocol'
 
 describe('Mallard Duck behaviors', () => {
   const flyWithWings: FlyBehavior = new FlyWithWings()
