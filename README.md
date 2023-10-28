@@ -218,6 +218,8 @@ npx ts-node src/myFile.ts
 
 `ts-node` uses the settings from your `tsconfig.json` file by default. It reads the TypeScript configuration from the `tsconfig.json` file in your project's directory and uses those settings to transpile and run your TypeScript files. This means that it will respect the compiler options, module resolution settings, and other configuration settings specified in your `tsconfig.json` file.
 
+*If it conflicts because of some ES syntax issue*, rename the `.ts` file to `.mjs`.
+
 ## Git
 
 ### Amend: Add a commit to the last one
