@@ -203,6 +203,21 @@ pnpm watch
 pnpm start
 ```
 
+### Run files individually
+
+The scripts in `package.json` runs the application staring from `index.ts`. If you want to run any `.ts` file, use `ts-node`. With `ts-node`, you can run TypeScript files directly. `ts-node` is a TypeScript execution environment that allows you to run TypeScript files directly without the need to manually compile them to JavaScript first.
+
+```bash
+npx pnpm install --save-dev ts-node
+```
+And execute by:
+
+```bash
+npx ts-node src/myFile.ts
+```
+
+`ts-node` uses the settings from your `tsconfig.json` file by default. It reads the TypeScript configuration from the `tsconfig.json` file in your project's directory and uses those settings to transpile and run your TypeScript files. This means that it will respect the compiler options, module resolution settings, and other configuration settings specified in your `tsconfig.json` file.
+
 ## Git
 
 ### Amend: Add a commit to the last one
