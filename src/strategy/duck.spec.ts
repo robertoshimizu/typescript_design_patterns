@@ -1,80 +1,42 @@
-
-abstract class Duck {
-  constructor () {}
-  quack!: () => void
-  swim!: () => void
-  display!: () => void
-}
-
-class MallardDuck extends Duck {
-  constructor () {
-    super()
-  }
-
-  quack = () => { console.log('Quack')}
-  swim = () => { console.log('Swim') }
-  display = () => { console.log('I am a Mallard Duck') }
-}
-
-class RubberDuck extends Duck {
-  constructor () {
-    super()
-  }
-
-  quack = () => {     
-    console.log('I cannot quack')    
-    throw new Error();
-    }  
-  swim = () => { console.log('Float') }
-  display = () => { console.log('I am a Rubber Duck') }
-}
+import {
+  type FlyBehavior,
+  FlyWithWings,
+  MallardDuck,
+  type QuackBehavior,
+  Quack
+} from './duck.protocol'
 
 describe('Mallard Duck behaviors', () => {
+  const flyWithWings: FlyBehavior = new FlyWithWings()
+  const quack: QuackBehavior = new Quack()
+  const sut = new MallardDuck(flyWithWings, quack)
   test('Mallard duck should quack', () => {
-    const duck = new MallardDuck()
-    const spy = jest.spyOn(duck, 'quack')
-    duck.quack()
-    expect(duck.quack).toBeCalled()
-    spy.mockReset()
-    spy.mockRestore()
+    expect(sut.performQuack()).toBe('Quack')
   })
+  test('Mallard duck should fly', () => {
+    expect(sut.performFly()).toBe('Fly')
+  })
+
   test('Mallard duck should swim', () => {
-    const duck = new MallardDuck()
-    const spy = jest.spyOn(duck, 'swim')
-    duck.swim()
-    expect(duck.swim).toBeCalled()
-    spy.mockReset()
-    spy.mockRestore()
+    expect(sut.swim()).toBe('Swim')
   })
   test('Mallard duck should display', () => {
-    const duck = new MallardDuck()
-    const spy = jest.spyOn(duck, 'display')
-    duck.display()
-    expect(duck.display).toBeCalled()
-    spy.mockReset()
-    spy.mockRestore()
+    expect(sut.display()).toBe('I am a Mallard Duck')
   })
 })
 
-describe('Rubber Duck behaviors', () => {
-  test('Rubber duck should not quack', () => {
-    const duck = new RubberDuck()
-    expect(duck.quack).toThrow(Error)
-  })
-  test('Rubber duck should swim', () => {
-    const duck = new RubberDuck()
-    const spy = jest.spyOn(duck, 'swim')
-    duck.swim()
-    expect(duck.swim).toBeCalled()
-    spy.mockReset()
-    spy.mockRestore()
-  })
-  test('Rubber duck should display', () => {
-    const duck = new RubberDuck()
-    const spy = jest.spyOn(duck, 'display')
-    duck.display()
-    expect(duck.display).toBeCalled()
-    spy.mockReset()
-    spy.mockRestore()
-  })
-})
+// describe('Rubber Duck behaviors', () => {
+//   const sut = new RubberDuck()
+//   test('Rubber duck should Squeak', () => {
+//     expect(sut.performQuack()).toBe('Quack')
+//   })
+//   test('Rubber duck should not fly', () => {
+//     expect(sut.performFly()).toBe("Don't fly")
+//   })
+//   test('Rubber duck should float', () => {
+//     expect(sut.swim()).toBe('Float')
+//   })
+//   test('Rubber duck should display', () => {
+//     expect(sut.display()).toBe('I am a Rubber Duck')
+//   })
+// })
