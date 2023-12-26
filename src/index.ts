@@ -1,27 +1,11 @@
-import { config } from 'dotenv'
-import { getJson } from 'serpapi'
-
-// Load environment variables from .env file
-config()
+import { SerpApi } from './model/serpapi'
 
 async function main () {
-  try {
-    const SERPAPI_API_KEY = process.env.SERPAPI_API_KEY // Load API key from environment variable
-    if (SERPAPI_API_KEY == null) {
-      throw new Error('API_KEY is not set in the environment variables.')
-    }
+  const serpai = new SerpApi()
+  const response = await serpai.search('beer')
 
-    const response = await getJson({
-      engine: 'google',
-      api_key: SERPAPI_API_KEY,
-      q: 'coffee',
-      location: 'Austin, Texas'
-    })
-
-    console.log(response)
-  } catch (error) {
-    console.error('Error:', error)
-  }
+  console.log(response)
 }
 
+// eslint-disable-next-line no-void
 void main()
