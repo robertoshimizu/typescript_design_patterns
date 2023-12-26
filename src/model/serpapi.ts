@@ -9,6 +9,17 @@ interface SerpApiPayload {
   tbs: string
 }
 
+interface OrganicResult {
+  position: number
+  title: string
+  link: string
+  displayed_link: string
+  favicon: string
+  snippet: string
+  snippet_highlighted_words: string[]
+  source: string
+}
+
 // Load environment variables from .env file
 config()
 export class SerpApi {
@@ -21,7 +32,7 @@ export class SerpApi {
     this.api_key = SERPAPI_API_KEY
   }
 
-  async search (query: string) {
+  async searchLink (query: string) {
     const source = 'site:ncbi.nlm.nih.gov/books/ OR site:ncbi.nlm.nih.gov/pmc/'
     const payload: SerpApiPayload = {
       engine: 'google',
@@ -31,9 +42,9 @@ export class SerpApi {
       tbs: 'cdr:1,cd_min:01/01/2018'
     }
     try {
-      const response = await getJson(payload)
-
-      return response.organic_results[0]
+      const responses = await getJson(payload)
+      const organicResults: OrganicResult[] = responses.organic_results
+      return organicResults[0].link
     } catch (error) {
       console.error('Error:', error)
     }
