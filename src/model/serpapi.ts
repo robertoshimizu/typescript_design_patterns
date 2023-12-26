@@ -1,6 +1,14 @@
 import { config } from 'dotenv'
 import { getJson } from 'serpapi'
 
+interface SerpApiPayload {
+  engine: string
+  api_key: string
+  q: string
+  location: string
+  tbs: string
+}
+
 // Load environment variables from .env file
 config()
 export class SerpApi {
@@ -14,15 +22,18 @@ export class SerpApi {
   }
 
   async search (query: string) {
+    const source = 'site:ncbi.nlm.nih.gov/books/ OR site:ncbi.nlm.nih.gov/pmc/'
+    const payload: SerpApiPayload = {
+      engine: 'google',
+      api_key: this.api_key,
+      q: `${query} ${source}`,
+      location: 'Austin, Texas',
+      tbs: 'cdr:1,cd_min:01/01/2018'
+    }
     try {
-      const response = await getJson({
-        engine: 'google',
-        api_key: this.api_key,
-        q: query,
-        location: 'Austin, Texas'
-      })
+      const response = await getJson(payload)
 
-      return response
+      return response.organic_results[0]
     } catch (error) {
       console.error('Error:', error)
     }
