@@ -1,3 +1,4 @@
+import { openai } from './model/openai'
 import { SerpApi } from './model/serpapi'
 import { webScraper } from './model/web_scraper'
 
@@ -12,7 +13,9 @@ async function main () {
     const result = await webScraper(item.link)
     return result
   }))
-  console.log(scrapes)
+  
+  // get a summary of each scrape
+  await openai('hi')
 }
 
 void main()
