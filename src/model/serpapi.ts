@@ -33,18 +33,18 @@ export class SerpApi {
   }
 
   async searchLink (query: string) {
-    const source = 'site:ncbi.nlm.nih.gov/books/ OR site:ncbi.nlm.nih.gov/pmc/'
+    const source = 'site:ncbi.nlm.nih.gov/books/ OR site:ncbi.nlm.nih.gov/pmc/ OR site:drugs.com OR site:merckmanuals.com OR site:medscape.com'
     const payload: SerpApiPayload = {
       engine: 'google',
       api_key: this.api_key,
-      q: `${query} ${source}`,
+      q: `(${query}) ${source}`,
       location: 'Austin, Texas',
       tbs: 'cdr:1,cd_min:01/01/2018'
     }
     try {
       const responses = await getJson(payload)
       const organicResults: OrganicResult[] = responses.organic_results
-      return organicResults[0].link
+      return organicResults
     } catch (error) {
       console.error('Error:', error)
     }
