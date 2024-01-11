@@ -1,28 +1,28 @@
 import {
-  type FlyBehavior,
-  FlyWithWings,
-  MallardDuck,
-  type QuackBehavior,
-  Quack
+    type FlyBehavior,
+    FlyWithWings,
+    MallardDuck,
+    type QuackBehavior,
+    Quack
 } from './duck.protocol'
 
 describe('Mallard Duck behaviors', () => {
-  const flyWithWings: FlyBehavior = new FlyWithWings()
-  const quack: QuackBehavior = new Quack()
-  const sut = new MallardDuck(flyWithWings, quack)
-  test('Mallard duck should quack', () => {
-    expect(sut.performQuack()).toBe('Quack')
-  })
-  test('Mallard duck should fly', () => {
-    expect(sut.performFly()).toBe('Fly')
-  })
+    const flyWithWings: FlyBehavior = new FlyWithWings()
+    const quack: QuackBehavior = new Quack()
+    const sut = new MallardDuck(flyWithWings, quack)
+    test('Mallard duck should quack', () => {
+        expect(sut.performQuack()).toBe('Quack')
+    })
+    test('Mallard duck should fly', () => {
+        expect(sut.performFly()).toBe('Fly')
+    })
 
-  test('Mallard duck should swim', () => {
-    expect(sut.swim()).toBe('Swim')
-  })
-  test('Mallard duck should display', () => {
-    expect(sut.display()).toBe('I am a Mallard Duck')
-  })
+    test('Mallard duck should swim', () => {
+        expect(sut.swim()).toBe('Swim')
+    })
+    test('Mallard duck should display', () => {
+        expect(sut.display()).toBe('I am a Mallard Duck')
+    })
 })
 
 // describe('Rubber Duck behaviors', () => {

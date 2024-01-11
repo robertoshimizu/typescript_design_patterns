@@ -1,3 +1,3 @@
 export interface QuackBehavior {
-  quack: () => string
+    quack: () => string
 }
