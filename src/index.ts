@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { openai } from './model/openai'
+
 import { SerpApi } from './model/serpapi'
 import { webScraper } from './model/web_scraper'
 
