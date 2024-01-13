@@ -33,7 +33,7 @@ export class SerpApi {
   }
 
   async searchLink (query: string) {
-    const source = 'site:ncbi.nlm.nih.gov/books/ OR site:ncbi.nlm.nih.gov/pmc/ OR site:drugs.com OR site:merckmanuals.com OR site:medscape.com'
+    const source = 'site:scielo.br/ OR site:ncbi.nlm.nih.gov/pmc/ OR site:cochranelibrary.com/ OR site:drugs.com/ OR site:medscape.com/ OR site:ncbi.nlm.nih.gov/books/ OR site:merckmanuals.com/professional/ OR site:nice.org.uk/guidance/ OR site:who.int/publications/ OR site:cdc.gov'
     const payload: SerpApiPayload = {
       engine: 'google',
       api_key: this.api_key,
