@@ -1,5 +1,5 @@
-import { config } from 'dotenv'
-import { getJson } from 'serpapi'
+import dotenv from 'dotenv'
+import { SerpAPILoader } from 'langchain/document_loaders/web/serpapi'
 
 interface SerpApiPayload {
   engine: string
@@ -9,19 +9,19 @@ interface SerpApiPayload {
   tbs: string
 }
 
-interface OrganicResult {
-  position: number
-  title: string
-  link: string
-  displayed_link: string
-  favicon: string
-  snippet: string
-  snippet_highlighted_words: string[]
-  source: string
-}
+// interface OrganicResult {
+//   position: number
+//   title: string
+//   link: string
+//   displayed_link: string
+//   favicon: string
+//   snippet: string
+//   snippet_highlighted_words: string[]
+//   source: string
+// }
 
 // Load environment variables from .env file
-config()
+dotenv.config()
 export class SerpApi {
   private readonly api_key: string
   constructor () {
@@ -42,14 +42,16 @@ export class SerpApi {
       tbs: 'cdr:1,cd_min:01/01/2018'
     }
     try {
-      const responses = await getJson(payload)
-      const organicResults: OrganicResult[] = responses.organic_results
-      const simplifiedResponse = organicResults.map(item => ({
-        position: item.position,
-        title: item.title,
-        link: item.link
-      }))
-      return simplifiedResponse
+      const loader = new SerpAPILoader(payload)
+      const docs = await loader.load()
+      // const organicResults: OrganicResult[] = responses.organic_results
+      // const simplifiedResponse = organicResults.map(item => ({
+      //   position: item.position,
+      //   title: item.title,
+      //   link: item.link
+      // }))
+      // return simplifiedResponse
+      return docs
     } catch (error) {
       console.error('Error:', error)
     }
