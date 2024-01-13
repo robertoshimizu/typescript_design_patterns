@@ -44,7 +44,12 @@ export class SerpApi {
     try {
       const responses = await getJson(payload)
       const organicResults: OrganicResult[] = responses.organic_results
-      return organicResults
+      const simplifiedResponse = organicResults.map(item => ({
+        position: item.position,
+        title: item.title,
+        link: item.link
+      }))
+      return simplifiedResponse
     } catch (error) {
       console.error('Error:', error)
     }

@@ -218,6 +218,14 @@ npx ts-node src/myFile.ts
 
 `ts-node` uses the settings from your `tsconfig.json` file by default. It reads the TypeScript configuration from the `tsconfig.json` file in your project's directory and uses those settings to transpile and run your TypeScript files. This means that it will respect the compiler options, module resolution settings, and other configuration settings specified in your `tsconfig.json` file.
 
+## Langchain
+when using langchain need to change the config. `npx tsc` to use `tsconfig.json`
+```bash
+npx tsc
+node dist/index.js
+```
+It compiles with errors, but it works.
+
 ## Git
 
 ### Amend: Add a commit to the last one
