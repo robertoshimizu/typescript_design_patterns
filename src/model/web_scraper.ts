@@ -22,7 +22,9 @@ export async function webScraper (page: string) {
     let textContent = $('body').text()
     textContent = textContent.replace(/\s\s+/g, ' ').trim()
 
-    return textContent
+    const maxLength = 10000
+
+    return textContent.slice(0, maxLength)
   } catch (error: any) {
     console.error('Error fetching the page:', error.message)
   }
