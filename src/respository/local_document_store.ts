@@ -2,8 +2,25 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-export interface Document {
-  pageContent: string // since pageContent is a JSON string
+export interface PageContent {
+  position: number
+  title: string
+  link: string
+  redirect_link: string
+  displayed_link: string
+  favicon: string
+  author?: string
+  cited_by?: string
+  extracted_cited_by?: number
+  date?: string
+  snippet?: string
+  snippet_highlighted_words?: string[]
+  sitelinks?: { inline: any[] } // Adjust the type according to your data
+  source?: string
+}
+
+export interface Documento {
+  pageContent: PageContent
   metadata: Metadata
 }
 
@@ -13,7 +30,7 @@ export interface Metadata {
 }
 
 export class DocumentManager {
-  private documents: Document[]
+  private documents: Documento[]
   private readonly filename: string
 
   constructor (filename: string) {
@@ -30,7 +47,11 @@ export class DocumentManager {
   private loadData (): void {
     try {
       const fileData = fs.readFileSync(this.filename, 'utf8')
-      this.documents = JSON.parse(fileData) as Document[]
+      const rawData = JSON.parse(fileData) as Array<{ pageContent: string, metadata: Metadata }>
+      this.documents = rawData.map(data => ({
+        pageContent: JSON.parse(data.pageContent) as PageContent,
+        metadata: data.metadata
+      }))
     } catch (error) {
       // Handle file read error (e.g., file not found)
       this.documents = []
@@ -38,15 +59,19 @@ export class DocumentManager {
   }
 
   private saveData (): void {
-    fs.writeFileSync(this.filename, JSON.stringify(this.documents, null, 2), 'utf8')
+    const dataToSave = this.documents.map(doc => ({
+      pageContent: JSON.stringify(doc.pageContent),
+      metadata: doc.metadata
+    }))
+    fs.writeFileSync(this.filename, JSON.stringify(dataToSave, null, 2), 'utf8')
   }
 
-  public create (document: Document): void {
+  public create (document: Documento): void {
     this.documents.push(document)
     this.saveData()
   }
 
-  public update (index: number, newDocument: Document): boolean {
+  public update (index: number, newDocument: Documento): boolean {
     if (this.documents[index]) {
       this.documents[index] = newDocument
       this.saveData()
@@ -64,11 +89,11 @@ export class DocumentManager {
     return false
   }
 
-  public getAllDocuments (): Document[] {
+  public getAllDocuments (): Documento[] {
     return this.documents
   }
 
-  public saveFetchedData (apiData: Document[]): void {
+  public saveFetchedData (apiData: Documento[]): void {
     this.documents = apiData
     this.saveData()
   }

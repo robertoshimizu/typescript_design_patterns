@@ -328,7 +328,69 @@ docManager.delete(0);
 // Getting all documents
 console.log(docManager.getAllDocuments());
 
-``````
+```
+
+## LCEL in Typescript
+
+#### RunnablePassthrough
+
+```typescript
+const prompt = ChatPromptTemplate.fromMessages([
+    ['system', 'You are a personal assistant.'],
+    ['user', 'This is my question: {question}']
+  ])
+
+  const chain = RunnableSequence.from([
+    new RunnablePassthrough().assign({
+      context: () => 'conexto do lcel'
+    }
+
+    ).withConfig({ runName: 'add context' }),
+    prompt
+  ])
+
+  const res = await chain.invoke({ question: 'What is the efficacy of rosuvastatin in heart attack prevention?' })
+  console.log(res)
+
+
+```
+
+#### RunnableLambda
+
+```typescript
+const prompt = ChatPromptTemplate.fromMessages([
+    ['system', 'You are a personal assistant.'],
+    ['user', 'This is my question: {question}']
+  ])
+
+  const chain = RunnableSequence.from([
+    new RunnablePassthrough().assign({
+      context: () => 'conexto do lcel'
+    }).withConfig({ runName: 'add context' }),
+    new RunnableLambda({
+      func: (input: string) => {
+        console.log('input', input.question)
+        const newInput = {
+          question: 'Qual a eficacia do rosuvastatina na prevencao de ataque cardiaco?',
+          context: 'questao traduzida para portugues'
+        }
+        return newInput
+      }
+    }).withConfig({ runName: 'contextRetriever' }),
+    prompt
+  ])
+
+  const res = await chain.invoke({ question: 'What is the efficacy of rosuvastatin in heart attack prevention?' })
+  console.log(res)
+
+
+```
+
+
+
+
+
+
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more information.
