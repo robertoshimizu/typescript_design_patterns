@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ChatOpenAI } from '@langchain/openai'
 import { webScraper } from './model/web_scraper'
-import { ChatPromptTemplate } from '@langchain/core/prompts'
+import { ChatPromptTemplate, PromptTemplate } from '@langchain/core/prompts'
 import { StringOutputParser } from '@langchain/core/output_parsers'
 
 import dotenv from 'dotenv'
 import { SerpApi } from './model/serpapi'
 import { DocumentManager, type Documento } from './respository/local_document_store'
-import { RunnableLambda, RunnablePassthrough, RunnableSequence } from '@langchain/core/runnables'
+import { RunnableLambda, RunnableMap, RunnableParallel, RunnablePassthrough, RunnableSequence } from '@langchain/core/runnables'
 dotenv.config()
 
 async function getLinks (input: string): Promise<Documento[]> {
@@ -67,26 +67,53 @@ async function main () {
     ['user', 'This is my question: {question}']
   ])
 
+  const summary_template = PromptTemplate.fromTemplate(
+    '{text} Using the above text, extract the necessary information to answer the question: > {question} ----------- if the question cannot be answered using the text, imply summarize the text. Include all factual information, numbers, stats etc if available.'
+  )
+
   const chain = RunnableSequence.from([
     new RunnablePassthrough().assign({
       context: () => 'conexto do lcel'
     }).withConfig({ runName: 'add context' }),
     new RunnableLambda({
       func: async (input: string) => {
-        console.log('input', input.question)
         const links = await getLinks(input.question)
-        const obj: Documento = links[0]
+        const objs: Documento[] = links
 
-        const newInput = {
-          question: 'Qual a eficacia do rosuvastatina na prevencao de ataque cardiaco?',
-          context: 'questao traduzida para portugues',
-          url: obj.pageContent.link
-        }
-        console.log('newInput', newInput)
-        return newInput
+        return objs.map((obj) => {
+          const newInput = {
+            question: 'Qual a eficacia do rosuvastatina na prevencao de ataque cardiaco?',
+            context: 'questao traduzida para portugues',
+            url: obj.pageContent.link
+          }
+          return newInput
+        })
       }
-    }).withConfig({ runName: 'contextRetriever' }),
-    prompt
+    }).withConfig({ runName: 'addLinks' }),
+    new RunnableLambda({
+      func: async (links: any) => {
+        return await Promise.all(links.map(async (link: any) => {
+          const scrape = await webScraper(link.url)
+          return {
+            question: link.question,
+            text: scrape,
+            url: link.url
+          }
+        }))
+      }
+    }).withConfig({ runName: 'scrapePages' }),
+    new RunnableLambda({
+      func: async (scrapes: any) => {
+        return await Promise.all(scrapes.map(async (scrape: any) => {
+          const formattedPrompt = await summary_template.format({
+            text: scrape.text,
+            question: scrape.question
+          })
+          console.log(formattedPrompt)
+        }))
+      }
+    }).withConfig({ runName: 'sumarizeScrapes' })
+
   ])
 
   const res = await chain.invoke({ question: 'What is the efficacy of rosuvastatin in heart attack prevention?' })
