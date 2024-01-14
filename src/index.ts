@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-multi-str */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -8,28 +9,40 @@ import { StringOutputParser } from '@langchain/core/output_parsers'
 
 import dotenv from 'dotenv'
 import { SerpApi } from './model/serpapi'
-import { DocumentManager, type Documento } from './respository/local_document_store'
-import { RunnableLambda, RunnableMap, RunnableParallel, RunnablePassthrough, RunnableSequence } from '@langchain/core/runnables'
+import { type Documento } from './respository/local_document_store'
+import { RunnableLambda, RunnablePassthrough, RunnableSequence } from '@langchain/core/runnables'
 dotenv.config()
+
+// async function getLinksSaved (input: string): Promise<Documento[]> {
+//   console.log('Getting links')
+//   const docManager = new DocumentManager('documents.json')
+//   if (docManager.getAllDocuments().length === 0) {
+//     console.log('No documents found locally. Fetching from API...')
+//     try {
+//       const serpai = new SerpApi()
+//       const searches = await serpai.searchLink(input)
+
+//       docManager.saveFetchedData(searches)
+//       console.log('Documents fetched from API and saved locally.')
+//       return searches
+//     } catch (error) {
+//       console.error('Error fetching documents from API:', error)
+//     }
+//   } else {
+//     console.log('Documents retrieved from local storage:')
+//     return docManager.getAllDocuments()
+//   }
+//   return []
+// }
 
 async function getLinks (input: string): Promise<Documento[]> {
   console.log('Getting links')
-  const docManager = new DocumentManager('documents.json')
-  if (docManager.getAllDocuments().length === 0) {
-    console.log('No documents found locally. Fetching from API...')
-    try {
-      const serpai = new SerpApi()
-      const searches = await serpai.searchLink(input)
-
-      docManager.saveFetchedData(searches)
-      console.log('Documents fetched from API and saved locally.')
-      return searches
-    } catch (error) {
-      console.error('Error fetching documents from API:', error)
-    }
-  } else {
-    console.log('Documents retrieved from local storage:')
-    return docManager.getAllDocuments()
+  try {
+    const serpai = new SerpApi()
+    const searches = await serpai.searchLink(input)
+    return searches
+  } catch (error) {
+    console.error('Error fetching documents from API:', error)
   }
   return []
 }
@@ -84,7 +97,6 @@ const RESEARCH_REPORT_TEMPLATE = 'Information: \
                         You MUST ensure that your summary includes clickable in-text citations in the format of your chosen citation style (APA, MLA, Chicago, etc.). When referencing specific information, facts, or quotes from the article, \
                         include a clickable superscript number or parentheses that link directly to the relevant section of the online source, this is essential and mandatory. YOU must at the end of the summary, provide a "References" or "Works Cited" \
                         section with the full citation details for the article, including the title, author(s), publication, date of publication and link of the source. Make sure to not add duplicated sources, but only one reference for each.  \
-                        The sources to be cited SHOULD BE the sources in url. \
                         You MUST write the response in apa format. \
                         Please do your best, this is very important to my career.'
 
@@ -96,39 +108,12 @@ const prompt = ChatPromptTemplate.fromMessages([
 async function main () {
   console.log('Langchain LCEL')
 
-  // console.log(searches?.slice(0, 3))
-  // scrape link
-  // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
-  // @ts-expect-error
-  // const scrapes = await Promise.all(searches.map(async (item) => {
-  //   const result = await webScraper(item.link)
-  //   const obj = { primary_source: item.link, content: result }
-  //   return obj
-  // }))
-
-  // console.log(scrapes.slice(1, 2))
-
-  // const prompt = ChatPromptTemplate.fromMessages([
-  //   ['system', 'You are a personal assistant.'],
-  //   ['user', '{input}']
-  // ])
-  // const chatModel = new ChatOpenAI({
-  //   openAIApiKey: process.env.OPENAI_API_KEY
-  // })
-
-  // const chain = prompt.pipe(chatModel).pipe(new StringOutputParser()).pipe(search)
-  // const input = {
-  //   input: 'efficacy of rosuvastatin in heart attack prevention'
-  // }
-  // const res = await chain.invoke(input)
-  // console.log(res)
-
   const chain = RunnableSequence.from([
     new RunnablePassthrough().assign({
       context: () => 'conexto do lcel'
     }).withConfig({ runName: 'add context' }),
     new RunnableLambda({
-      func: async (input: string) => {
+      func: async (input: { question: string }) => {
         const links = await getLinks(input.question)
         const objs: Documento[] = links
 
@@ -192,14 +177,17 @@ async function main () {
     })).pipe(new StringOutputParser())
   ])
   const startTime = new Date()
-  const stream = await chain.stream({ question: 'Leflunomide in lupus nephritis' })
+  const response = await chain.invoke({ question: 'Posology of Amoxicilin' })
+  console.log(response)
 
-  // Each chunk has the same interface as a chat message
-  for await (const chunk of stream) {
-    console.log(chunk)
-  }
+  // const stream = await chain.stream({ question: 'Bupropion adverse effects' })
+
+  // for await (const chunk of stream) {
+  //   console.log(chunk)
+  // }
+
   const endTime = new Date()
-  const timeElapsed = endTime - startTime // Time in milliseconds
+  const timeElapsed = Number(endTime) - Number(startTime) // Time in milliseconds
   console.log('done')
   console.log(`Time elapsed: ${timeElapsed} ms`)
 }

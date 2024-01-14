@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import { SerpAPILoader } from 'langchain/document_loaders/web/serpapi'
-import { type Documento } from '../respository/local_document_store'
+import { type PageContent, type Documento, type Metadata } from '../respository/local_document_store'
 
 interface SerpApiPayload {
   engine: string
@@ -9,17 +9,6 @@ interface SerpApiPayload {
   location: string
   tbs: string
 }
-
-// interface OrganicResult {
-//   position: number
-//   title: string
-//   link: string
-//   displayed_link: string
-//   favicon: string
-//   snippet: string
-//   snippet_highlighted_words: string[]
-//   source: string
-// }
 
 // Load environment variables from .env file
 dotenv.config()
@@ -44,22 +33,16 @@ export class SerpApi {
     }
     try {
       const loader = new SerpAPILoader(payload)
-      const docs = await loader.load()
-      const allDocs = docs.map(doc => ({
-        ...doc,
-        metadata: {
-          source: '',
-          responseType: '',
-          ...doc.metadata
-        }
-      }))
-      if (allDocs.length === 0) {
-        throw new Error('No documents found.')
-      }
-      if (allDocs.length < 3) {
-        return allDocs
-      }
-      return allDocs.slice(0, 3)
+      const results = await loader.load()
+      const documents: Documento[] = results.map(result => {
+        // Directly parse pageContent from the result string, assuming it's a JSON string
+        const pageContent = JSON.parse(result.pageContent) as PageContent
+        // Create metadata object, assuming the source and responseType are available in the result
+        const metadata = result.metadata as Metadata
+
+        return { pageContent, metadata }
+      })
+      return documents.length < 3 ? documents : documents.slice(0, 3)
     } catch (error) {
       console.log('Error retrieving SerpAPILoader:', error)
       return []
