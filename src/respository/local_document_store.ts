@@ -17,7 +17,12 @@ export class DocumentManager {
   private readonly filename: string
 
   constructor (filename: string) {
-    this.filename = path.join(__dirname, filename)
+    // Hardcoded path relative to the project root
+    const dbPath = 'src/db'
+    // Check if the path contains 'dist' directory
+    this.filename = path.join(__dirname, '..', '..', dbPath, filename)
+
+    console.log('DocumentManager filename:', this.filename)
     this.documents = []
     this.loadData()
   }
