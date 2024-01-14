@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import { SerpAPILoader } from 'langchain/document_loaders/web/serpapi'
+import { type Document } from '../respository/local_document_store'
 
 interface SerpApiPayload {
   engine: string
@@ -32,7 +33,7 @@ export class SerpApi {
     this.api_key = SERPAPI_API_KEY
   }
 
-  async searchLink (query: string) {
+  async searchLink (query: string): Promise<Document[]> {
     const source = 'site:scielo.br/ OR site:ncbi.nlm.nih.gov/pmc/ OR site:cochranelibrary.com/ OR site:drugs.com/ OR site:medscape.com/ OR site:ncbi.nlm.nih.gov/books/ OR site:merckmanuals.com/professional/ OR site:nice.org.uk/guidance/ OR site:who.int/publications/ OR site:cdc.gov'
     const payload: SerpApiPayload = {
       engine: 'google',
@@ -44,16 +45,17 @@ export class SerpApi {
     try {
       const loader = new SerpAPILoader(payload)
       const docs = await loader.load()
-      // const organicResults: OrganicResult[] = responses.organic_results
-      // const simplifiedResponse = organicResults.map(item => ({
-      //   position: item.position,
-      //   title: item.title,
-      //   link: item.link
-      // }))
-      // return simplifiedResponse
-      return docs
+      return docs.map(doc => ({
+        ...doc,
+        metadata: {
+          source: '',
+          responseType: '',
+          ...doc.metadata
+        }
+      }))
     } catch (error) {
-      console.error('Error:', error)
+      console.log('Error retrieving SerpAPILoader:', error)
+      return []
     }
   }
 }

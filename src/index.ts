@@ -6,12 +6,28 @@ import { StringOutputParser } from '@langchain/core/output_parsers'
 
 import dotenv from 'dotenv'
 import { SerpApi } from './model/serpapi'
+import { DocumentManager } from './respository/local_document_store'
 dotenv.config()
 
 async function main () {
   console.log('Langchain LCEL')
-  const serpai = new SerpApi()
-  const searches = await serpai.searchLink('efficacy of rosuvastatin in heart attack prevention')
+  let searches
+  const docManager = new DocumentManager('documents.json')
+  if (docManager.getAllDocuments().length === 0) {
+    console.log('No documents found locally. Fetching from API...')
+    try {
+      const serpai = new SerpApi()
+      searches = await serpai.searchLink('efficacy of rosuvastatin in heart attack prevention')
+
+      docManager.saveFetchedData(searches)
+      console.log('Documents fetched from API and saved locally.')
+    } catch (error) {
+      console.error('Error fetching documents from API:', error)
+    }
+  } else {
+    console.log('Documents retrieved from local storage:')
+    searches = docManager.getAllDocuments()
+  }
 
   // console.log(searches?.slice(0, 3))
   // scrape link

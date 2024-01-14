@@ -300,7 +300,35 @@ async function main() {
 void main();
 ```
 
+## Persist data
 
+```typescript
+
+// Usage
+const docManager = new DocumentManager('documents.json');
+
+// Creating a new document
+docManager.create({
+  pageContent: '...',
+  metadata: { ... }
+});
+
+// Reading a document
+console.log(docManager.read(0));
+
+// Updating a document
+docManager.update(0, {
+  pageContent: 'new content',
+  metadata: { ... }
+});
+
+// Deleting a document
+docManager.delete(0);
+
+// Getting all documents
+console.log(docManager.getAllDocuments());
+
+``````
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more information.
