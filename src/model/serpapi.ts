@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import { SerpAPILoader } from 'langchain/document_loaders/web/serpapi'
-import { type PageContent, type Documento, type Metadata } from '../respository/local_document_store'
+import { type PageContent, type Documento, type Metadata } from './entities'
 
 interface SerpApiPayload {
   engine: string
