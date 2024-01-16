@@ -1,14 +1,9 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import cheerio from 'cheerio'
-import { ChatAnthropic } from '@langchain/anthropic'
-import { config } from 'dotenv'
-import { PromptTemplate } from '@langchain/core/prompts'
 
 // Load environment variables from .env file
-config()
 
-const api_key = process.env.ANTHROPIC_API_KEY
 interface IScraper {
   scrape: (url: string) => Promise<string>
 }
@@ -23,18 +18,6 @@ function extractPMCNumber (url: string): string | null {
   return (match != null) ? match[1] : null
 }
 
-function extractFromXML (xml: string): any {
-  const $ = cheerio.load(xml, { xmlMode: true })
-
-  // Extracting the entire <book-part book-part-type="chapter"> and its children
-  const chapter = $('book-part[book-part-type="chapter"]').html()
-
-  // Extracting the <body> tag and its children within the chapter
-  const body = $('book-part[book-part-type="chapter"]').find('body').html()
-
-  return body
-}
-
 class StatsPearlScraper implements IScraper {
   async scrape (url: string): Promise<string> {
     // Specific scraping logic for books
@@ -43,33 +26,18 @@ class StatsPearlScraper implements IScraper {
     try {
       const response = await fetch(api)
       if (response.ok) {
-        const scrape = await response.text()
-        const body = extractFromXML(scrape)
-        const contents: Array<{ tag: string, content: string }> = []
-        body.find('title, p').each((index, element) => {
-          const tag = $(element).get(0).tagName
-          const content = $(element).text()
-          contents.push({ tag, content })
-        })
-        const summaryTemplate = PromptTemplate.fromTemplate(
-          '<<< {text} >>> Using the above text, summarize the text. Include all factual information, numbers, stats etc if available.'
-        )
+        const blob = await response.text()
+        const $ = cheerio.load(blob)
+        let textContent = $('book-part').text()
+        textContent = textContent.replace(/\s\s+/g, ' ').trim()
 
-        const model = new ChatAnthropic({
-          modelName: 'claude-2.1',
-          temperature: 0.0,
-          anthropicApiKey: api_key
-        })
-        console.log(contents)
-        const prompt = await summaryTemplate.format({ text: contents })
-        const scrapey = await model.invoke(prompt)
-        console.log(scrapey.content)
-        return scrapey.content
+        return textContent
       }
       return ' '
     } catch (error) {
       console.error(error)
     }
+    return ''
   }
 }
 
@@ -77,7 +45,21 @@ class PMCScraper implements IScraper {
   async scrape (url: string): Promise<string> {
     // Specific scraping logic for articles
     const PMC = extractPMCNumber(url)
-    return `Scraped data for PMC article: ${PMC}`
+    const api = `https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC${PMC}/unicode`
+    try {
+      const response = await fetch(api)
+      if (response.ok) {
+        const blob = await response.text()
+        const $ = cheerio.load(blob)
+        let textContent = $('passage > text').text()
+        textContent = textContent.replace(/\s\s+/g, ' ').trim()
+
+        return textContent
+      }
+    } catch (error) {
+      console.error(error)
+    }
+    return ''
   }
 }
 
@@ -139,10 +121,10 @@ export async function webScraper (category: string, url: string): any {
       scraper = new PMCScraper()
       break
     case 'medscape':
-      scraper = new MedscapeScraper()
+      scraper = new OthersScraper()
       break
     case 'drugs':
-      scraper = new DrugsScraper()
+      scraper = new OthersScraper()
       break
     default:
       scraper = new OthersScraper()
