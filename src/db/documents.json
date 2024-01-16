@@ -1,23 +1,25 @@
-[
-  {
-    "pageContent": "{\"position\":1,\"title\":\"Efficacy of statins for primary prevention in people at low ...\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3216447/\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3216447/&ved=2ahUKEwiTorWa29yDAxWbv4kEHcW2DW0QFnoECBcQAQ\",\"displayed_link\":\"https://www.ncbi.nlm.nih.gov › articles › PMC3216447\",\"favicon\":\"https://serpapi.com/searches/65a3bd0911c881f6a7dd3144/images/24573ab0ef48738c1074e6d4b673f2ed83ca3e53d7914e2bf498f0e365b10f9e.png\",\"author\":\"by M Tonelli\",\"cited_by\":\"Cited by 213\",\"extracted_cited_by\":213,\"date\":\"2011\",\"snippet\":\"Statins were found to be efficacious in preventing death and cardiovascular morbidity in people at low cardiovascular risk. Reductions in relative risk were ...\",\"snippet_highlighted_words\":[\"Statins\",\"efficacious\",\"preventing\",\"cardiovascular\",\"cardiovascular\"],\"sitelinks\":{\"inline\":[{\"title\":\"Efficacy Of Statins For...\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3216447/#:~:text=Efficacy%20of%20statins%20for%20primary%20prevention%20in%20people%20at%20low%20cardiovascular%20risk%3A%20a%20meta%2Danalysis,-Marcello%20Tonelli%2C%20MD%20SM\"},{\"title\":\"Table 1\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3216447/#:~:text=Table%201%3A\"},{\"title\":\"Table 3\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3216447/#:~:text=Table%203%3A\"}]},\"source\":\"nih.gov\"}",
-    "metadata": {
-      "source": "SerpAPI",
-      "responseType": "organic_results"
+{
+  "Lupus nephritis": [
+    {
+      "pageContent": "{\"position\":1,\"title\":\"Lupus Nephritis - StatPearls\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK499817/\",\"redirect_link\":\"https://www.google.comhttps://www.ncbi.nlm.nih.gov/books/NBK499817/\",\"displayed_link\":\"https://www.ncbi.nlm.nih.gov › books › NBK499817\",\"favicon\":\"https://serpapi.com/searches/65a642bacace9676b2ae6ea6/images/e3138773b3501538d28e45f3af3ed040e56725d0b066f8532a4df884913fc0e1.png\",\"author\":\"by R Musa\",\"cited_by\":\"Cited by 25\",\"extracted_cited_by\":25,\"date\":\"2022\",\"snippet\":\"Systemic lupus erythematosus (SLE) is an autoimmune disease that results in chronic inflammation and damage of more than one organ.\",\"snippet_highlighted_words\":[\"chronic inflammation and damage of more than one\"],\"sitelinks\":{\"inline\":[{\"title\":\"Etiology\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK499817/#_article-25699_s3_\"},{\"title\":\"Histopathology\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK499817/#_article-25699_s6_\"},{\"title\":\"Evaluation\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK499817/#_article-25699_s8_\"},{\"title\":\"Treatment / Management\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK499817/#_article-25699_s9_\"}]},\"source\":\"nih.gov\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":2,\"title\":\"Lupus Nephritis: Practice Essentials, Pathophysiology ...\",\"link\":\"https://emedicine.medscape.com/article/330369-overview\",\"redirect_link\":\"https://www.google.comhttps://emedicine.medscape.com/article/330369-overview\",\"displayed_link\":\"https://emedicine.medscape.com › Rheumatology\",\"favicon\":\"https://serpapi.com/searches/65a642bacace9676b2ae6ea6/images/e3138773b3501538d28e45f3af3ed0403c23ae74a8d76f7f658e5b587e66f4b5.png\",\"date\":\"Mar 27, 2023\",\"snippet\":\"Lupus nephritis, one of the most serious manifestations of systemic lupus erythematosus (SLE), usually arises within 5 years of diagnosis; ...\",\"snippet_highlighted_words\":[\"one of the most serious manifestations of systemic lupus erythematosus (SLE\"],\"source\":\"medscape.com\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":3,\"title\":\"The Pathogenesis of Lupus Nephritis - PMC\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3752952/\",\"redirect_link\":\"https://www.google.comhttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC3752952/\",\"displayed_link\":\"https://www.ncbi.nlm.nih.gov › articles › PMC3752952\",\"favicon\":\"https://serpapi.com/searches/65a642bacace9676b2ae6ea6/images/e3138773b3501538d28e45f3af3ed04047741a191ad4e3902c3e4278d075f3ee.png\",\"author\":\"by M Lech\",\"cited_by\":\"Cited by 479\",\"extracted_cited_by\":479,\"date\":\"2013\",\"snippet\":\"Lupus nephritis is an immune complex GN that develops as a frequent complication of SLE. The pathogenesis of lupus nephritis involves a variety of pathogenic ...\",\"snippet_highlighted_words\":[\"an immune complex GN that develops as a frequent complication of SLE\"],\"sitelinks\":{\"inline\":[{\"title\":\"Abstract\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3752952/#abstract-a.f.b.otitle\"},{\"title\":\"Extrarenal Pathogenic...\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3752952/#s1title\"},{\"title\":\"The Present and Future of LN...\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3752952/#s11title\"},{\"title\":\"Summary\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3752952/#sec-a.g.etitle\"}]},\"source\":\"nih.gov\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
     }
-  },
-  {
-    "pageContent": "{\"position\":2,\"title\":\"Rosuvastatin: A Review of the Pharmacology and Clinical ...\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3303484/\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3303484/&ved=2ahUKEwiTorWa29yDAxWbv4kEHcW2DW0QFnoECBAQAQ\",\"displayed_link\":\"https://www.ncbi.nlm.nih.gov › articles › PMC3303484\",\"favicon\":\"https://serpapi.com/searches/65a3bd0911c881f6a7dd3144/images/24573ab0ef48738c1074e6d4b673f2edd970340ac8bf3e9703dbc01e5d4b7e9a.png\",\"author\":\"by A Luvai\",\"cited_by\":\"Cited by 189\",\"extracted_cited_by\":189,\"date\":\"2012\",\"snippet\":\"The 4S study was the first study conclusively linking a statin with improved outcomes in patients with coronary heart disease. It established ...\",\"snippet_highlighted_words\":[\"improved outcomes\"],\"source\":\"nih.gov\"}",
-    "metadata": {
-      "source": "SerpAPI",
-      "responseType": "organic_results"
-    }
-  },
-  {
-    "pageContent": "{\"position\":3,\"title\":\"Efficacy and safety of the intensive dose of rosuvastatin 40 ...\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5143813/\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5143813/&ved=2ahUKEwiTorWa29yDAxWbv4kEHcW2DW0QFnoECBEQAQ\",\"displayed_link\":\"https://www.ncbi.nlm.nih.gov › articles › PMC5143813\",\"favicon\":\"https://serpapi.com/searches/65a3bd0911c881f6a7dd3144/images/24573ab0ef48738c1074e6d4b673f2edbe2f81983f9029e138e7234f888abbd6.png\",\"author\":\"by CP Shah\",\"cited_by\":\"Cited by 15\",\"extracted_cited_by\":15,\"date\":\"2016\",\"snippet\":\"The study showed that rosuvastatin 20 mg is as effective as atorvastatin 80 mg in intensive statin treatment. There is dearth of data on effect ...\",\"snippet_highlighted_words\":[\"rosuvastatin 20 mg is as effective as atorvastatin 80 mg\"],\"source\":\"nih.gov\"}",
-    "metadata": {
-      "source": "SerpAPI",
-      "responseType": "organic_results"
-    }
-  }
-]
+  ]
+}

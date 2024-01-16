@@ -86,7 +86,7 @@ async function main () {
     // })).pipe(new StringOutputParser())
   ])
   const startTime = new Date()
-  const response = await chain.invoke({ question: 'Posology of Amoxicilin' })
+  const response = await chain.invoke({ question: 'Lupus nephritis' })
   console.log(response)
 
   // const stream = await chain.stream({ question: 'Bupropion adverse effects' })

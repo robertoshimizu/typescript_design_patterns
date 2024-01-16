@@ -5,21 +5,23 @@ import { SerpApi } from './serpapi'
 export async function getLinksSaved (input: string): Promise<Documento[]> {
   console.log('Getting links')
   const docManager = new DocumentManager('documents.json')
-  if (docManager.getAllDocuments().length === 0) {
-    console.log('No documents found locally. Fetching from API...')
+  const existingDocuments = docManager.getDocumentsForQuery(input)
+
+  if (existingDocuments.length === 0) {
+    console.log('No documents found locally for this query. Fetching from API...')
     try {
       const serpai = new SerpApi()
       const searches = await serpai.searchLink(input)
 
-      docManager.saveFetchedData(searches)
-      console.log('Documents fetched from API and saved locally.')
+      docManager.saveDocumentsForQuery(input, searches)
+      console.log('Documents fetched from API and saved locally for:', input)
       return searches
     } catch (error) {
       console.error('Error fetching documents from API:', error)
     }
   } else {
-    console.log('Documents retrieved from local storage:')
-    return docManager.getAllDocuments()
+    console.log('Documents retrieved from local storage for:', input)
+    return existingDocuments
   }
   return []
 }

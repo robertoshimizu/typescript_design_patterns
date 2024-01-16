@@ -21,22 +21,30 @@ export class DocumentManager {
   private loadData (): void {
     try {
       const fileData = fs.readFileSync(this.filename, 'utf8')
-      const rawData = JSON.parse(fileData) as Array<{ pageContent: string, metadata: Metadata }>
-      this.documents = rawData.map(data => ({
-        pageContent: JSON.parse(data.pageContent) as PageContent,
-        metadata: data.metadata
-      }))
+      const rawData = JSON.parse(fileData)
+
+      // Deserialize data for each query
+      this.documents = Object.entries(rawData).reduce((acc, [query, documents]) => {
+        acc[query] = documents.map(doc => ({
+          pageContent: JSON.parse(doc.pageContent) as PageContent,
+          metadata: doc.metadata as Metadata
+        }))
+        return acc
+      }, {})
     } catch (error) {
-      // Handle file read error (e.g., file not found)
-      this.documents = []
+      this.documents = {}
     }
   }
 
   private saveData (): void {
-    const dataToSave = this.documents.map(doc => ({
-      pageContent: JSON.stringify(doc.pageContent),
-      metadata: doc.metadata
-    }))
+    const dataToSave = Object.entries(this.documents).reduce((acc, [query, documents]) => {
+      acc[query] = documents.map(doc => ({
+        pageContent: JSON.stringify(doc.pageContent),
+        metadata: doc.metadata
+      }))
+      return acc
+    }, {})
+    // console.log('Data to save', dataToSave)
     fs.writeFileSync(this.filename, JSON.stringify(dataToSave, null, 2), 'utf8')
   }
 
@@ -69,6 +77,15 @@ export class DocumentManager {
 
   public saveFetchedData (apiData: Documento[]): void {
     this.documents = apiData
+    this.saveData()
+  }
+
+  public getDocumentsForQuery (query: string): Documento[] {
+    return this.documents[query] || []
+  }
+
+  public saveDocumentsForQuery (query: string, documents: Documento[]): void {
+    this.documents[query] = documents
     this.saveData()
   }
 }
