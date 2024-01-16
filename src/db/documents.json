@@ -21,5 +21,97 @@
         "responseType": "organic_results"
       }
     }
+  ],
+  "Dengue": [
+    {
+      "pageContent": "{\"position\":1,\"title\":\"Dengue\",\"link\":\"https://www.cdc.gov/dengue/index.html\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.cdc.gov/dengue/index.html&ved=2ahUKEwig14ePweGDAxVVlokEHT0zBBwQFnoECBcQAQ\",\"displayed_link\":\"https://www.cdc.gov › dengue\",\"thumbnail\":\"https://serpapi.com/searches/65a640c5f636ff76ebd1b18c/images/3b7408b8fa5ff6d7c1f8d97c63a0404fcd403a2a19f65f1f9d3680bc23fabf5e.jpeg\",\"favicon\":\"https://serpapi.com/searches/65a640c5f636ff76ebd1b18c/images/3b7408b8fa5ff6d7c1f8d97c63a0404f57892965523acfdb068665438f404297.png\",\"snippet\":\"A dengue vaccine is approved for use in children aged 9 to 16 years with laboratory-confirmed previous dengue virus infection and living in areas where dengue ...\",\"snippet_highlighted_words\":[\"dengue\",\"dengue\",\"dengue\"],\"sitelinks\":{\"inline\":[{\"title\":\"Symptoms and Treatment\",\"link\":\"https://www.cdc.gov/dengue/symptoms/index.html\"},{\"title\":\"Data and Maps\",\"link\":\"https://www.cdc.gov/dengue/statistics-maps/data-and-maps.html\"},{\"title\":\"About Dengue\",\"link\":\"https://www.cdc.gov/dengue/about/index.html\"},{\"title\":\"Prevention\",\"link\":\"https://www.cdc.gov/dengue/prevention/index.html\"}]},\"source\":\"cdc.gov\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":2,\"title\":\"What You Need to Know - About Dengue\",\"link\":\"https://www.cdc.gov/dengue/about/index.html\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.cdc.gov/dengue/about/index.html&ved=2ahUKEwig14ePweGDAxVVlokEHT0zBBwQFnoECBgQAQ\",\"displayed_link\":\"https://www.cdc.gov › dengue › about\",\"thumbnail\":\"https://serpapi.com/searches/65a640c5f636ff76ebd1b18c/images/3b7408b8fa5ff6d7c1f8d97c63a0404fe7d68ce647da3c4b36e8790ab4e211a7.jpeg\",\"favicon\":\"https://serpapi.com/searches/65a640c5f636ff76ebd1b18c/images/3b7408b8fa5ff6d7c1f8d97c63a0404fac62f899f641976c2b12db33fd22b010.png\",\"snippet\":\"Dengue is caused by one of any of four related viruses: dengue virus 1, 2, 3, and 4. A person can be infected with dengue multiple times in their life.\",\"snippet_highlighted_words\":[\"Dengue\",\"dengue\",\"dengue\"],\"source\":\"cdc.gov\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":3,\"title\":\"Symptoms and Treatment | Dengue\",\"link\":\"https://www.cdc.gov/dengue/symptoms/index.html\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.cdc.gov/dengue/symptoms/index.html&ved=2ahUKEwig14ePweGDAxVVlokEHT0zBBwQFnoECBMQAQ\",\"displayed_link\":\"https://www.cdc.gov › dengue › symptoms\",\"favicon\":\"https://serpapi.com/searches/65a640c5f636ff76ebd1b18c/images/3b7408b8fa5ff6d7c1f8d97c63a0404f804cf0eb67a1dbec99e361f9cf50d427.png\",\"snippet\":\"Symptoms of severe dengue · Belly pain, tenderness · Vomiting (at least 3 times in 24 hours) · Bleeding from the nose or gums · Vomiting blood, or blood in the ...\",\"snippet_highlighted_words\":[\"dengue\"],\"source\":\"cdc.gov\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    }
+  ],
+  "Posologia Amoxil": [
+    {
+      "pageContent": "{\"position\":1,\"title\":\"Amoxicillin: Uses, Dosage, Side Effects, Warnings\",\"link\":\"https://www.drugs.com/amoxicillin.html\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.drugs.com/amoxicillin.html&ved=2ahUKEwievIjexuGDAxV6EVkFHSoRD24QFnoECBMQAQ\",\"displayed_link\":\"https://www.drugs.com › amoxicillin\",\"favicon\":\"https://serpapi.com/searches/65a646aaa74fe0d7567d9c8e/images/75ee89669efd52bd2d52dc0042b3f86f440fbe6e4668feb79e703cc0d574cb53.png\",\"snippet\":\"Amoxicillin is a penicillin antibiotic that fights bacteria. It is used to treat many types of infections such as tonsillitis, bronchitis, pneumonia, ...\",\"snippet_highlighted_words\":[\"a penicillin antibiotic that fights bacteria\"],\"source\":\"drugs.com\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":2,\"title\":\"Amoxicillin / Clavulanate Dosage Guide + Max Dose ...\",\"link\":\"https://www.drugs.com/dosage/amoxicillin-clavulanate.html\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.drugs.com/dosage/amoxicillin-clavulanate.html&ved=2ahUKEwievIjexuGDAxV6EVkFHSoRD24QFnoECBEQAQ\",\"displayed_link\":\"https://www.drugs.com › Amoxicillin/clavulanate\",\"favicon\":\"https://serpapi.com/searches/65a646aaa74fe0d7567d9c8e/images/75ee89669efd52bd2d52dc0042b3f86fdfec78455be3fa1cc68236e81d8d7824.png\",\"date\":\"Oct 7, 2022\",\"snippet\":\"Ampicillin antibiotics (including amoxicillin) should not be used to treat mononucleosis due to a high incidence of erythematous skin rashes.\",\"snippet_highlighted_words\":[\"amoxicillin) should not be used to treat mononucleosis due\"],\"source\":\"drugs.com\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":3,\"title\":\"Amoclan Dosage Guide\",\"link\":\"https://www.drugs.com/dosage/amoclan.html\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.drugs.com/dosage/amoclan.html&ved=2ahUKEwievIjexuGDAxV6EVkFHSoRD24QFnoECA8QAQ\",\"displayed_link\":\"https://www.drugs.com › Amoclan\",\"favicon\":\"https://serpapi.com/searches/65a646aaa74fe0d7567d9c8e/images/75ee89669efd52bd2d52dc0042b3f86fa921d3ff28646a180fa0a078e296ba5e.png\",\"snippet\":\"Detailed dosage guidelines and administration information for Amoclan (amoxicillin and clavulanate potassium). Includes dose adjustments, warnings and ...\",\"snippet_highlighted_words\":[\"dosage\",\"amoxicillin\",\"dose\"],\"source\":\"drugs.com\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    }
+  ],
+  "Posologia Amoxicilina": [
+    {
+      "pageContent": "{\"position\":1,\"title\":\"Tratamiento empírico de las infecciones del adulto - PMC\",\"link\":\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7144499/\",\"redirect_link\":\"https://www.google.comhttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC7144499/\",\"displayed_link\":\"https://www.ncbi.nlm.nih.gov › pmc\",\"favicon\":\"https://serpapi.com/searches/65a646f9ad7fa9e55954afc9/images/bbaf86d7a36f233baf099218683df852c8493b683d4142fb3b4f46c6684a2c3b.png\",\"author\":\"by MJM Mira\",\"cited_by\":\"Cited by 21\",\"extracted_cited_by\":21,\"date\":\"2016\",\"snippet\":\"Amoxicilina 750-1.000 mg/8 h, 10 días, v.o., Alergia a penicilinas: levofloxacino 500 mg/24 h, 10-14 días, o azitromicina 500 mg/24 h, 3 días o claritromicina ...\",\"snippet_highlighted_words\":[\"Amoxicilina\"],\"missing\":[\"(Posologia\"],\"must_include\":{\"word\":\"(Posologia\",\"link\":\"https://www.google.com/search?sca_esv=598740777&q=%22(Posologia%22+Amoxicilina)+site:scielo.br/+OR+site:ncbi.nlm.nih.gov/pmc/+OR+site:cochranelibrary.com/+OR+site:drugs.com/pro/+OR+site:medscape.com/+OR+site:ncbi.nlm.nih.gov/books/+OR+site:merckmanuals.com/professional/+OR+site:nice.org.uk/guidance/+OR+site:who.int/publications/+OR+site:cdc.gov&sa=X&ved=2ahUKEwjTtbyEx-GDAxW6LUQIHUIvCvUQ5t4CegQIFRAB\"},\"source\":\"nih.gov\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":2,\"title\":\"[Table], Posología de los medicamentos utilizados en los ...\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK583545/table/annex2.tab2/\",\"redirect_link\":\"https://www.google.comhttps://www.ncbi.nlm.nih.gov/books/NBK583545/table/annex2.tab2/\",\"displayed_link\":\"https://www.ncbi.nlm.nih.gov › table\",\"favicon\":\"https://serpapi.com/searches/65a646f9ad7fa9e55954afc9/images/bbaf86d7a36f233baf099218683df85272aefa6f4709d3d52e7f894f06e94436.png\",\"snippet\":\"Posología de los medicamentos utilizados en los esquemas de segunda línea para la TB-MDR, por franja de peso, en pacientes menores de 15 años ; 250 mg, comp, 0,5 ...\",\"snippet_highlighted_words\":[\"Posología\"],\"source\":\"nih.gov\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":3,\"title\":\"[Table], Posología de los medicamentos utilizados en ...\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK583545/table/annex2.tab1/\",\"redirect_link\":\"https://www.google.comhttps://www.ncbi.nlm.nih.gov/books/NBK583545/table/annex2.tab1/\",\"displayed_link\":\"https://www.ncbi.nlm.nih.gov › table\",\"favicon\":\"https://serpapi.com/searches/65a646f9ad7fa9e55954afc9/images/bbaf86d7a36f233baf099218683df852650fbeb1d36dd0bd9440e0851c449e8a.png\",\"snippet\":\"Posología de los medicamentos utilizados en esquemas de segunda línea para la TB-MDR, por franja de peso, en pacientes mayores de 14 años ; Moxifloxacina, Dosis ...\",\"snippet_highlighted_words\":[\"Posología\"],\"source\":\"nih.gov\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    }
+  ],
+  "Posology Amoxil": [
+    {
+      "pageContent": "{\"position\":1,\"title\":\"Amoxil (amoxicillin) dosing, indications, interactions, ...\",\"link\":\"https://reference.medscape.com/drug/amoxil-amoxicillin-342473\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://reference.medscape.com/drug/amoxil-amoxicillin-342473&ved=2ahUKEwjXx9-ryeGDAxXGj2oFHS9DD2UQFnoECBIQAQ\",\"displayed_link\":\"https://reference.medscape.com › drug › amoxil-amox...\",\"favicon\":\"https://serpapi.com/searches/65a64965defa13fe466f0d6f/images/04d54a14b33ed51586ee2abcbd0a52768085fa7e267c35d24d8a01223022a5d9.png\",\"snippet\":\"Dosing & Uses ; Mild to moderate infections. 500 mg PO q12hr or 250 mg PO q8hr for 10-14 days ; Severe infections. 875 mg PO q12hr or 500 mg PO q8hr for 10-14 ...\",\"snippet_highlighted_words\":[\"500 mg PO q12hr or\"],\"source\":\"medscape.com\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":2,\"title\":\"Amoxicillin - StatPearls\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK482250/\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.ncbi.nlm.nih.gov/books/NBK482250/&ved=2ahUKEwjXx9-ryeGDAxXGj2oFHS9DD2UQFnoECA8QAQ\",\"displayed_link\":\"https://www.ncbi.nlm.nih.gov › books › NBK482250\",\"favicon\":\"https://serpapi.com/searches/65a64965defa13fe466f0d6f/images/04d54a14b33ed51586ee2abcbd0a5276178e77ebfdc30507b1b1d4b773e356b0.png\",\"author\":\"by BJ Akhavan\",\"cited_by\":\"Cited by 100\",\"extracted_cited_by\":100,\"date\":\"2022\",\"snippet\":\"Amoxicillin is indicated for treating infections caused by susceptible isolates of selected bacteria, specifically beta-lactamase–negative, in ...\",\"snippet_highlighted_words\":[\"indicated for treating infections caused by susceptible isolates of selected bacteria\"],\"sitelinks\":{\"inline\":[{\"title\":\"Continuing Education Activity\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK482250/#_article-17474_s1_\"},{\"title\":\"Indications\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK482250/#_article-17474_s2_\"},{\"title\":\"Administration\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK482250/#_article-17474_s4_\"},{\"title\":\"Adverse Effects\",\"link\":\"https://www.ncbi.nlm.nih.gov/books/NBK482250/#_article-17474_s5_\"}]},\"source\":\"nih.gov\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    },
+    {
+      "pageContent": "{\"position\":3,\"title\":\"Amoxicillin Suspension: Package Insert\",\"link\":\"https://www.drugs.com/pro/amoxicillin-suspension.html\",\"redirect_link\":\"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.drugs.com/pro/amoxicillin-suspension.html&ved=2ahUKEwjXx9-ryeGDAxXGj2oFHS9DD2UQFnoECBMQAQ\",\"displayed_link\":\"https://www.drugs.com › Amoxicillin\",\"favicon\":\"https://serpapi.com/searches/65a64965defa13fe466f0d6f/images/04d54a14b33ed51586ee2abcbd0a52762b16bbb03efa35282bdbf9ea80f238e5.png\",\"snippet\":\"Orally administered doses of amoxicillin suspension, 125 mg/5 mL and 250 mg/5 mL, result in average peak blood levels 1 to 2 hours after administration in the ...\",\"snippet_highlighted_words\":[\"125 mg/5 mL and 250 mg/5 mL\"],\"source\":\"drugs.com\"}",
+      "metadata": {
+        "source": "SerpAPI",
+        "responseType": "organic_results"
+      }
+    }
   ]
 }

@@ -14,6 +14,51 @@ import { getLinks, getLinksSaved } from './model/getLinks'
 import { summaryTemplate, prompt } from './model/prompts'
 dotenv.config()
 
+interface QuestionItem {
+  question: string
+  context: string
+  url: string
+}
+
+function extractCodeFromUrl (url: string): { type: string, code: string } | null {
+  const patterns = {
+    statsPearl: /https:\/\/www\.ncbi\.nlm\.nih\.gov\/books\/(NBK\d+)/,
+    pmc: /https:\/\/www\.ncbi\.nlm\.nih\.gov\/pmc\/articles\/(PMC\d+)/,
+    medscape: /emedicine\.medscape\.com\//,
+    drugs: /www\.drugs\.com\//
+  }
+
+  for (const type in patterns) {
+    const match = url.match(patterns[type as keyof typeof patterns])
+    if (match != null) {
+      return { type, code: match[1] }
+    }
+  }
+
+  return null
+}
+
+function separateQuestions (questions: QuestionItem[]): [{ statsPearl: QuestionItem[] }, { pmc: QuestionItem[] }, { others: QuestionItem[] }] {
+  const categorized = {
+    statsPearl: [] as QuestionItem[],
+    pmc: [] as QuestionItem[],
+    medscape: [] as QuestionItem[],
+    drugs: [] as QuestionItem[],
+    others: []
+  }
+
+  questions.forEach(question => {
+    const result = extractCodeFromUrl(question.url)
+    if (result != null) {
+      categorized[result.type as keyof typeof categorized].push(question)
+    } else {
+      categorized.others.push(question)
+    }
+  })
+
+  return [{ statsPearl: categorized.statsPearl }, { pmc: categorized.pmc }, { medscape: categorized.medscape }, { drugs: categorized.drugs }, { others: categorized.others }]
+}
+
 async function main () {
   console.log('Langchain LCEL')
 
@@ -87,7 +132,8 @@ async function main () {
   ])
   const startTime = new Date()
   const response = await chain.invoke({ question: 'Lupus nephritis' })
-  console.log(response)
+  const separatedQuestions = separateQuestions(response)
+  console.log(JSON.stringify(separatedQuestions, null, 2))
 
   // const stream = await chain.stream({ question: 'Bupropion adverse effects' })
 
