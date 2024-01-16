@@ -59,6 +59,40 @@ function separateQuestions (questions: QuestionItem[]): [{ statsPearl: QuestionI
   return [{ statsPearl: categorized.statsPearl }, { pmc: categorized.pmc }, { medscape: categorized.medscape }, { drugs: categorized.drugs }, { others: categorized.others }]
 }
 
+async function processLinks (items: QuestionItem[]): Promise<any[]> {
+  // Map over each category to process its links in parallel
+
+  const processedItems = await Promise.all(items.map(async (item: QuestionItem) => {
+    // Determine the category name (e.g., 'statsPearl', 'pmc', etc.)
+
+    const categoryInfo = extractCodeFromUrl(item.url)
+    const category = (categoryInfo != null) ? categoryInfo.type : 'others'
+
+    // Process each link in the category in parallel
+    const scrapeData = await webScraper(category, item.url)
+    return {
+      question: item.question,
+      context: item.context,
+      text: scrapeData,
+      url: item.url
+    }
+  }))
+
+  return processedItems
+}
+
+// async (links: any) => {
+//   console.log('Scraping pages ...')
+//   return await Promise.all(links.map(async (link: any) => {
+//     const scrape = await webScraper(link.url)
+//     return {
+//       question: link.question,
+//       text: scrape,
+//       url: link.url
+//     }
+//   }))
+// }
+
 async function main () {
   console.log('Langchain LCEL')
 
@@ -71,7 +105,7 @@ async function main () {
         const links = await getLinksSaved(input.question)
         const objs: Documento[] = links
 
-        return objs.map((obj) => {
+        const response = objs.map((obj) => {
           const newInput = {
             question: input.question,
             context: 'questao traduzida para portugues',
@@ -79,21 +113,14 @@ async function main () {
           }
           return newInput
         })
+
+        // console.log(JSON.stringify(response, null, 2)
+        return response
       }
-    }).withConfig({ runName: 'addLinks' })
-    // new RunnableLambda({
-    //   func: async (links: any) => {
-    //     console.log('Scraping pages ...')
-    //     return await Promise.all(links.map(async (link: any) => {
-    //       const scrape = await webScraper(link.url)
-    //       return {
-    //         question: link.question,
-    //         text: scrape,
-    //         url: link.url
-    //       }
-    //     }))
-    //   }
-    // }).withConfig({ runName: 'scrapePages' }),
+    }).withConfig({ runName: 'addLinks' }),
+    new RunnableLambda({
+      func: processLinks
+    }).withConfig({ runName: 'scrapePages' })
     // new RunnableLambda({
     //   func: async (scrapes: any) => {
     //     console.log('Summarizing pages ...')
@@ -132,8 +159,7 @@ async function main () {
   ])
   const startTime = new Date()
   const response = await chain.invoke({ question: 'Lupus nephritis' })
-  const separatedQuestions = separateQuestions(response)
-  console.log(JSON.stringify(separatedQuestions, null, 2))
+  console.log('Final Chain', response)
 
   // const stream = await chain.stream({ question: 'Bupropion adverse effects' })
 
